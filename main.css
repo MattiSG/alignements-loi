@@ -2,6 +2,10 @@ body {
 	font-size: 150%;
 }
 
+p {
+	margin-top: 0;
+}
+
 input {
 	font-size: 100%;
 }

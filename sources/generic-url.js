@@ -1,6 +1,6 @@
 <generic-url>
-	le document
-	<input class="source" required type="url" placeholder="https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000030021309&cidTexte=LEGITEXT000006069577&categorieLien=id&dateTexte=20151231" value={ url } onchange={ setValue }>
+	<p>le document
+	<input class="source" required type="url" placeholder="https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000030021309&cidTexte=LEGITEXT000006069577&categorieLien=id&dateTexte=20151231" value={ url } onchange={ setValue }></p>
 
 	<style scoped>
 		input {
