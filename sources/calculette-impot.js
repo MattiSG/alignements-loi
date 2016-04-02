@@ -1,6 +1,6 @@
 <calculette-impot>
 	<p>la variable
-	<input required type="text" name="query" placeholder="LIM_BAR2" value={ opts.value } onchange={ getDescription }>
+	<input required type="text" name="query" placeholder="V_0CF" value={ opts.value } onkeyup={ getDescription }>
 	dans le calculateur des impôts ({ description })</p>
 
 	<script>
