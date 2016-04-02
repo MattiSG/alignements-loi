@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Aligner des notions</title>
+
+		<meta charset="UTF-8">
+
+		<link rel="stylesheet" href="//writ.cmcenroe.me/1.0.2/writ.min.css">
+		<link rel="stylesheet" type="text/css" href="./main.css">
+		<link rel="stylesheet" type="text/css" href="./buttons.css">
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/riot/2.3.17/riot+compiler.min.js"></script>
+
+		<script src="sources/calculette-impot.js" type="riot/tag"></script>
+		<script src="sources/openfisca.js" type="riot/tag"></script>
+		<script src="sources/generic-url.js" type="riot/tag"></script>
+	</head>
+	<body>
+		<h1>Représentations de notions à aligner</h1>
+
+		<form action="http://163.172.140.176/notions" method="POST">
+			<calculette-impot class="source"></calculette-impot>
+			et
+			<openfisca class="source"></openfisca>
+			et
+			<generic-url class="source"></generic-url>
+			représentent la même notion.
+
+			<input type="submit" class="awesome orange" value="Enregistrer">
+		</form>
+
+		<a href="lookup.html">Rechercher une notion</a>
+
+		<script src="https://cdn.rawgit.com/github/fetch/master/fetch.js"></script>
+
+		<script>
+			riot.mount('*');
+		</script>
+
+		<script>
+			var form = document.forms[0];
+
+			form.addEventListener('submit', function(event) {
+				form.classList.remove('saved', 'error');
+				form.classList.add('async');
+
+				var urls = Array.from(document.querySelectorAll('.source'))
+								.map(function(input) { return input.value });
+
+				fetch(form.action, {
+					method: form.method,
+					body: JSON.stringify(urls),
+					headers: {
+						'Content-Type': 'application/json',
+					}
+				}).then(
+					function(response) { form.classList.add('saved') },
+					function(response) { form.classList.add('error') }
+				).then(function(response) {
+					form.classList.remove('async');
+				}, console.error.bind(console));
+
+				event.preventDefault();
+			});
+		</script>
+	</body>
+</html>
