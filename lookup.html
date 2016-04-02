@@ -16,10 +16,7 @@
 		<h1>Rechercher une notion</h1>
 
 		<form action="http://163.172.140.176/notions/">
-			<label>
-				URI à rechercher
-				<input type="url" name="uri">
-			</label>
+			<calculette-impot class="source" id="uri"></calculette-impot>
 
 			<input type="submit" class="awesome green" value="Rechercher">
 		</form>
@@ -38,16 +35,16 @@
 
 			form.addEventListener('submit', function(event) {
 				document.getElementById('results').innerHTML = '';
+				var query = document.getElementById('uri').value;
 
 				form.classList.remove('error');
 				form.classList.add('async');
 
-				fetch(form.action + '?uri=' + encodeURIComponent(form.uri.value))
+				fetch(form.action + '?uri=' + encodeURIComponent(query))
 					.then(
 						function(response) { return response.json() }
 					).then(function(uris) {
 						uris.forEach(function(uri) {
-							console.log('>> uri:', uri);
 							document.getElementById('results').innerHTML += '<li><code><a href="' + uri + '">' + uri + '</a></code></li>';
 						});
 						form.classList.remove('async');
