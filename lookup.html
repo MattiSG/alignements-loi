@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rechercher des notions</title>
+
+		<link rel="stylesheet" href="//writ.cmcenroe.me/1.0.2/writ.min.css">
+		<link rel="stylesheet" type="text/css" href="./main.css">
+		<link rel="stylesheet" type="text/css" href="./buttons.css">
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/riot/2.3.17/riot+compiler.min.js"></script>
+
+		<script src="sources/calculette-impot.js" type="riot/tag"></script>
+		<script src="sources/generic-url.js" type="riot/tag"></script>
+	</head>
+	<body>
+		<h1>Rechercher une notion</h1>
+
+		<form action="http://163.172.140.176/notions/">
+			<label>
+				URI à rechercher
+				<input type="url" name="uri">
+			</label>
+
+			<input type="submit" class="awesome green" value="Rechercher">
+		</form>
+
+		<ul id="results">
+		</ul>
+
+		<script src="https://cdn.rawgit.com/github/fetch/master/fetch.js"></script>
+
+		<script>
+			riot.mount('*');
+		</script>
+
+		<script>
+			var form = document.forms[0];
+
+			form.addEventListener('submit', function(event) {
+				document.getElementById('results').innerHTML = '';
+
+				form.classList.remove('error');
+				form.classList.add('async');
+
+				fetch(form.action + '?uri=' + encodeURIComponent(form.uri.value))
+					.then(
+						function(response) { return response.json() }
+					).then(function(uris) {
+						uris.forEach(function(uri) {
+							console.log('>> uri:', uri);
+							document.getElementById('results').innerHTML += '<li><code><a href="' + uri + '">' + uri + '</a></code></li>';
+						});
+						form.classList.remove('async');
+					}, function(response) {
+						form.classList.add('error');
+						console.error(response);
+					});
+
+				event.preventDefault();
+			});
+		</script>
+	</body>
+</html>
