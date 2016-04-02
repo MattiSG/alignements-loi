@@ -10,19 +10,16 @@
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/riot/2.3.17/riot+compiler.min.js"></script>
 
 		<script src="sources/calculette-impot.js" type="riot/tag"></script>
+		<script src="sources/generic-url.js" type="riot/tag"></script>
 	</head>
 	<body>
 		<h1>Représentations de notions à aligner</h1>
 
 
 		<form action="http://163.172.140.176/notions" method="POST">
-			Les représentations accessibles aux adresses
-
 			<calculette-impot class="source"></calculette-impot>
-
-			<input class="source" required type="url" placeholder="https://git.framasoft.org/openfisca/calculette-impots-m-source-code/blob/master/src/tgvH.m#L6515">
 			et
-			<input class="source" type="url" placeholder="https://git.framasoft.org/french-tax-and-benefit-tables/ipp-tax-and-benefit-tables-yaml-clean/blob/master/baremes-ipp-impot-revenu-income-tax/bareme-ir.yaml#L48">
+			<generic-url class="source"></generic-url>
 			représentent la même notion.
 
 			<input type="submit" class="awesome orange" value="Valider">

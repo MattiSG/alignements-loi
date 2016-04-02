@@ -1,6 +1,7 @@
 <calculette-impot>
-	<input type="text" name="query" placeholder="RSOC10" value={ opts.value } onchange={ getDescription }>
-	<p class="description">{ description }</p>
+	<p>la variable
+	<input required type="text" name="query" placeholder="RSOC10" value={ opts.value } onchange={ getDescription }>
+	dans le calculateur des impôts ({ description })</p>
 
 	<script>
 		getDescription() {

@@ -14,14 +14,6 @@ h1 {
 	line-height: 1.5;
 }
 
-input {
-	display: block;
-}
-
-input[type="url"] {
-	width: 100%;
-}
-
 form.async input[type="submit"] {
 	opacity: 0.5;
 	pointer-events: none;
