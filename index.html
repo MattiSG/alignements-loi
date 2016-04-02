@@ -6,9 +6,15 @@
 		<link rel="stylesheet" href="//writ.cmcenroe.me/1.0.2/writ.min.css">
 		<link rel="stylesheet" type="text/css" href="./main.css">
 		<link rel="stylesheet" type="text/css" href="./buttons.css">
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/riot/2.3.17/riot+compiler.min.js"></script>
+
+		<script src="sources/calculette-impot.js" type="riot/tag"></script>
 	</head>
 	<body>
 		<h1>Représentations de notions à aligner</h1>
+
+		<calculette-impot></calculette-impot>
 
 		<form action="http://163.172.140.176/notions" method="POST">
 			Les représentations accessibles aux adresses
@@ -21,6 +27,11 @@
 		</form>
 
 		<script src="https://cdn.rawgit.com/github/fetch/master/fetch.js"></script>
+
+		<script>
+			riot.mount('*');
+		</script>
+
 		<script>
 			var form = document.forms[0];
 
