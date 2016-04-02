@@ -1,5 +1,5 @@
 <calculette-impot>
-	<input type="text" name="query" placeholder="RSOC10" onchange={ getDescription }>
+	<input type="text" name="query" placeholder="RSOC10" value={ opts.value } onchange={ getDescription }>
 	<p class="description">{ description }</p>
 
 	<script>
@@ -8,6 +8,7 @@
 				.then(function(response) { return response.json() })
 				.then(function(json) {
 					this.description = json.description;
+					this.root.value = 'https://git.framasoft.org/openfisca/calculette-impots-m-source-code/blob/master/src/tgvH.m#L' + json.tgvh_linecol[0][0];
 					this.update();
 				}.bind(this), console.error.bind(console));
 		}
