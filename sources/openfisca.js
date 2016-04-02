@@ -1,6 +1,6 @@
 <openfisca>
 	<p>la variable
-	<input required type="text" name="query" placeholder="nb_pac" value={ opts.value } onchange={ getDescription }>
+	<input required type="text" name="query" placeholder="nb_pac" value={ opts.value } onkeyup={ getDescription }>
 	dans Openfisca ({ description })</p>
 
 	<script>
