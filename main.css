@@ -1,0 +1,46 @@
+body {
+	font-size: 150%;
+}
+
+input {
+	font-size: 100%;
+}
+
+input[type="submit"] {
+	width: 100%;
+}
+
+h1 {
+	line-height: 1.5;
+}
+
+input {
+	display: block;
+}
+
+input[type="url"] {
+	width: 100%;
+}
+
+form.async input[type="submit"] {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+form.saved {
+	animation: greenfade 2s;
+}
+
+form.error {
+	animation: redfade 2s;
+}
+
+@keyframes redfade {
+	from { background-color: rgba(255,100, 100, 1) }
+	to   { background-color: rgba(255,100, 100, 0) }
+}
+
+@keyframes greenfade {
+	from { background-color: rgba(100, 255, 100, 1) }
+	to   { background-color: rgba(100, 255, 100, 0) }
+}
