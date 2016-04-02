@@ -5,10 +5,30 @@
 	</head>
 	<body>
 		<form action="http://163.172.140.176/notions" method="POST">
-			<input type="url">
-			<input type="url">
+			<input type="url" placeholder="https://git.framasoft.org/openfisca/calculette-impots-m-source-code/blob/master/src/tgvH.m#L6515">
+			<input type="url" placeholder="https://git.framasoft.org/french-tax-and-benefit-tables/ipp-tax-and-benefit-tables-yaml-clean/blob/master/baremes-ipp-impot-revenu-income-tax/bareme-ir.yaml#L48">
 
 			<input type="submit">
 		</form>
+
+		<script src="https://cdn.rawgit.com/github/fetch/master/fetch.js"></script>
+		<script>
+			var form = document.forms[0];
+
+			var urls = Array.from(document.querySelectorAll('input[type="url"]'))
+							.map(function(input) { return input.value });
+
+			form.addEventListener('submit', function(event) {
+				fetch(form.action, {
+					method: form.method,
+					body: JSON.stringify(urls),
+					headers: {
+						'Content-Type': 'application/json',
+					}
+				}).then(console.log.bind(console), console.log.bind(console));
+
+				event.preventDefault();
+			});
+		</script>
 	</body>
 </html>
