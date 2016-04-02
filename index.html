@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/riot/2.3.17/riot+compiler.min.js"></script>
 
 		<script src="sources/calculette-impot.js" type="riot/tag"></script>
+		<script src="sources/openfisca.js" type="riot/tag"></script>
 		<script src="sources/generic-url.js" type="riot/tag"></script>
 	</head>
 	<body>
@@ -19,6 +20,8 @@
 
 		<form action="http://163.172.140.176/notions" method="POST">
 			<calculette-impot class="source"></calculette-impot>
+			et
+			<openfisca class="source"></openfisca>
 			et
 			<generic-url class="source"></generic-url>
 			représentent la même notion.
