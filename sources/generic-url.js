@@ -1,6 +1,6 @@
 <generic-url>
 	le document
-	<input class="source" required type="url" placeholder="https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000030021309&cidTexte=LEGITEXT000006069577&categorieLien=id&dateTexte=20151231" value={ url }>
+	<input class="source" required type="url" placeholder="https://www.legifrance.gouv.fr/affichCodeArticle.do?idArticle=LEGIARTI000030021309&cidTexte=LEGITEXT000006069577&categorieLien=id&dateTexte=20151231" value={ url } onchange={ setValue }>
 
 	<style scoped>
 		input {
@@ -14,9 +14,9 @@
 
 	<script>
 		setValue() {
-			fetch({ url })
+			fetch(this.url)
 				.then(function(response) {
-					if (this.response.ok)
+					if (response.ok)
 						this.root.value = this.url;
 					this.update();
 				}.bind(this), console.error.bind(console));
