@@ -35,12 +35,12 @@
 		<script>
 			var form = document.forms[0];
 
-			var urls = Array.from(document.querySelectorAll('input[type="url"]'))
-							.map(function(input) { return input.value });
-
 			form.addEventListener('submit', function(event) {
 				form.classList.remove('saved', 'error');
 				form.classList.add('async');
+
+				var urls = Array.from(document.querySelectorAll('input[type="url"]'))
+								.map(function(input) { return input.value });
 
 				fetch(form.action, {
 					method: form.method,
